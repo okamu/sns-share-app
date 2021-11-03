@@ -14,8 +14,12 @@ class CreateMessageTable extends Migration
     public function up()
     {
         Schema::create('message', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id');
+            $table->string('file_path');
+            $table->string('content');
+//            $table->bigIncrements('id');
             $table->timestamps();
+            $table->primary('id');
         });
     }
 
