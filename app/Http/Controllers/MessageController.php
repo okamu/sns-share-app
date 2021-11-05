@@ -11,6 +11,16 @@ use Str;
 
 class MessageController extends Controller{
 
+    public function show($id){
+        /** @var Message $message */
+        $message = Message::find($id);
+
+        return response()->json([
+            'message' => $message->content,
+            'url' => config('app.image_url') . '/' . $message->file_path
+        ]);
+    }
+
     public function store(Request $request){
         $params = $request->json()->all();
 
